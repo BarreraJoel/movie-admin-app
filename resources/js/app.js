@@ -1,2 +1,2 @@
 import './bootstrap';
-// import "flyonui/flyonui"
+import "flyonui/flyonui"

@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
 @section('title')
-    Inicio
+    Agregar pelicula
 @endsection
 
 @section('main-content')
-    <h3>HOME</h3>
+
+    <div>
+        <x-movie-form />
+    </div>
+
 @endsection

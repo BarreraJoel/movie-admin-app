@@ -16,34 +16,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::create([
+            'name' => 'Juan Gomez',
+            'email' => 'juan@mail.com',
+            'password' => Hash::make('12345678'),
+        ]);
 
-        // User::create([
-        //     'name' => 'Juan Gomez',
-        //     'email' => 'juan@mail.com',
-        //     'password' => Hash::make('12345678'),
-        // ]);
+        User::create([
+            'name' => 'Melisa Perez',
+            'email' => 'melisa@mail.com',
+            'password' => Hash::make('12345678'),
+        ]);
 
-        // User::create([
-        //     'name' => 'Melisa Perez',
-        //     'email' => 'melisa@mail.com',
-        //     'password' => Hash::make('12345678'),
-        // ]);
-
-
-        // Category::create(['name' => 'Terror',]);
-        // Category::create(['name' => 'Comedy',]);
-        // Category::create(['name' => 'Action',]);
-        // Category::create(['name' => 'Thriller',]);
-        // Category::create(['name' => 'Drama',]);
+        Category::create(['name' => 'Terror',]);
+        Category::create(['name' => 'Comedy',]);
+        Category::create(['name' => 'Action',]);
+        Category::create(['name' => 'Thriller',]);
+        Category::create(['name' => 'Drama',]);
     
         // Role::create(['name' => 'admin']);
         // Role::create(['name' => 'guest']);
 
         // $user = User::find(1);
-        // $user->roles()->attach(1);
-
-        
+        // $user->roles()->attach(1);        
 
     }
 }

@@ -1,14 +1,18 @@
 @extends('layouts.app')
 
 @section('title')
-    Detalles de la pelicula
+    {{ $movie->name }} ({{ $movie->age }})
 @endsection
 
 @section('main-content')
 
     <div>
-        {{-- <livewire:back-button /> --}}
-        {{-- @livewire('back-button', ['route' => url('movies/')]) --}}
+        @if (session()->has('success'))
+            <div class="alert alert-success" role="alert">
+                {{session()->get('success')}}
+            </div>
+        @endif
+
         @include('components.movies.movie-card', compact('movie'))
     </div>
 

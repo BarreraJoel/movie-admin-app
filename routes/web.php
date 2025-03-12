@@ -1,6 +1,7 @@
 <?php
 
 require_once "auth.php";
+require_once "user.php";
 require_once "movies.php";
 
 use App\Http\Controllers\HomeController;

@@ -11,24 +11,19 @@
                     </a>
                 </li>
                 <li>
-                    <div class="dropdown relative inline-flex rtl:[--placement:bottom-end]">
-                        <a aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown" id="dropdown">
+                    <div class="relative inline-flex group rtl:[--placement:bottom-end]">
+                        <a href="{{ route('movies.index') }}">
                             PELICULAS
                         </a>
-                        <ul class="dropdown-menu dropdown-open:opacity-100 hidden min-w-60" role="menu"
-                            aria-orientation="vertical" aria-labelledby="dropdown">
+                        
+                        <ul class="absolute mt-7 w-48 dropdown-menu shadow-lg opacity-0 invisible transition-all duration-200 ease-in-out group-hover:opacity-100 group-hover:visible">
                             <li>
-                                <a class="dropdown-item" href="{{ route('movies.index') }}">
-                                    Ver todos
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ route('movies.create') }}">
+                                <a href="{{ route('movies.create') }}" class="dropdown-item">
                                     Crear
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div>                    
                 </li>
                 @if (Auth::user())
                     <li>

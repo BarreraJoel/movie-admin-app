@@ -6,7 +6,7 @@ use App\Http\Requests\StoreMovieRequest;
 use App\Models\Movie;
 use App\Services\FileService;
 use App\Services\ValidatorService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class MovieController extends Controller
 {
@@ -36,7 +36,7 @@ class MovieController extends Controller
      */
     public function store(StoreMovieRequest $request)
     {
-        // dd($request->input('categories'));
+        // dd($request->all());
 
         ValidatorService::validate(
             $request->all(),
@@ -52,6 +52,7 @@ class MovieController extends Controller
         );
 
         $newMovie = new Movie($request->except(['image_url', 'categories']));
+        $newMovie->slug = Str::slug($request->input('name'),'-');
         $newMovie->image_url = $path;
         $newMovie->save();
 
@@ -89,8 +90,7 @@ class MovieController extends Controller
      */
     public function update(StoreMovieRequest $request, Movie $movie)
     {
-        // dd($request->all());
-
+        dd($request->all());
         ValidatorService::validate(
             $request->all(),
             $request->rules(),
@@ -105,6 +105,7 @@ class MovieController extends Controller
         );
 
         $movie->fill($request->except(['image_url', 'categories']));
+        $movie->slug = Str::slug($request->input('name'),'-');
         $movie->image_url = $path;
         $movie->update();
 

@@ -23,6 +23,24 @@
                 ]
             )
         </div>
+
+        <div class="">
+            @include(
+                'components.form.input',
+                [
+                    'type' => 'number',
+                    'input_name' => 'age',
+                    'input_text' => 'Año de estreno',
+                    'placeholder' => 'Ingrese el año',
+                ]
+            )
+        </div>
+        @error('age')
+            <small class="text-error">
+                {{ $message }}
+            </small>
+        @enderror
+
         <div class="flex gap-4 horizontal-scrollbar">
             @livewire(
                 'form.checkbox',

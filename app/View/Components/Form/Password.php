@@ -11,7 +11,11 @@ class Password extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(
+        public string $input_name,
+        public string $input_text,
+        public string $value = ""
+    )
     {
         //
     }

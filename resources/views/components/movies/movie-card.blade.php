@@ -5,7 +5,10 @@
         <h5 class="card-title mb-2.5">
             {{ $movie->name }}
         </h5>
-        <div class=" flex">
+        <h6 class="text-secondary">
+            {{ $movie->age }}
+        </h6>
+        <div class="flex">
             @foreach ($movie->categories as $category)
                 @include('components.badge', ['text' => $category->name])
             @endforeach
@@ -15,7 +18,7 @@
         </p>
         <div class="card-actions">
             <button class="btn btn-soft btn-primary"><span class="icon-[tabler--shopping-cart] "></span> Agregar al carrito</button>
-            <a class="btn btn-soft btn-success" href="{{ route('movies.edit', ['movie' => $movie->id]) }}">
+            <a class="btn btn-soft btn-success" href="{{ route('movies.edit', ['movie' => $movie]) }}">
                 <span class="icon-[tabler--pencil] "></span> Editar
             </a>
             <button type="button" class="btn btn-soft btn-error" aria-haspopup="dialog" aria-expanded="false"

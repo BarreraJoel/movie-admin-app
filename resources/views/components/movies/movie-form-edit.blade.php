@@ -1,5 +1,5 @@
 <div>
-    <form action="{{ route('movies.update', $movie->id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('movies.update', $movie) }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <input type="hidden" name="_method" value="patch">
@@ -16,6 +16,12 @@
                 ]
             )
         </div>
+        @error('name')
+            <small class="text-error">
+                {{ $message }}
+            </small>
+        @enderror
+
         <div class="">
             @include(
                 'components.form.text-area',
@@ -27,6 +33,30 @@
                 ]
             )
         </div>
+        @error('description')
+            <small class="text-error">
+                {{ $message }}
+            </small>
+        @enderror
+
+        <div class="">
+            @include(
+                'components.form.input',
+                [
+                    'type' => 'number',
+                    'input_name' => 'age',
+                    'input_text' => 'Año de estreno',
+                    'placeholder' => 'Ingrese el año',
+                    'value' => $movie->age,
+                ]
+            )
+        </div>
+        @error('age')
+            <small class="text-error">
+                {{ $message }}
+            </small>
+        @enderror
+
         <div class="flex gap-4 horizontal-scrollbar">
             @livewire(
                 'form.checkbox',
@@ -38,6 +68,12 @@
                 ]
             )
         </div>
+        @error('categories')
+            <small class="text-error">
+                {{ $message }}
+            </small>
+        @enderror
+
         <div class="">
             @include(
                 'components.form.input-file',
@@ -47,6 +83,12 @@
                 ]
             )
         </div>
+        @error('image_url')
+            <small class="text-error">
+                {{ $message }}
+            </small>
+        @enderror
+
         <div class="">
             @include(
                 'components.form.input',
@@ -59,6 +101,12 @@
                 ]
             )
         </div>
+        @error('duration')
+            <small class="text-error">
+                {{ $message }}
+            </small>
+        @enderror
+
         <div class="">
             @include(
                 'components.form.input',
@@ -71,7 +119,11 @@
                 ]
             )
         </div>
-
+        @error('price')
+            <small class="text-error">
+                {{ $message }}
+            </small>
+        @enderror
 
         <button type="submit" class="btn btn-soft btn-primary">
             Editar

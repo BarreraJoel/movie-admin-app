@@ -9,10 +9,15 @@ class Movie extends Model
     protected $fillable = [
         "name",
         "description",
+        "age",
         "image_url",
         "duration",
         "price"
     ];
+
+    public function getRouteKeyName(){
+        return 'slug';
+    }
 
     public function categories()
     {

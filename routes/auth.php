@@ -14,8 +14,9 @@ Route::middleware(LoggedOutMiddleware::class)->group(function () {
         Route::post("log", [AuthController::class, "log"])
             ->name("log");
     });
-    
 });
 
 Route::post("logout", [AuthController::class, "logout"])
     ->name("logout");
+Route::post("add_user", [AuthController::class, "add_user"])
+    ->name("add_user");

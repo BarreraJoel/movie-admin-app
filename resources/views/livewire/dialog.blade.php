@@ -11,7 +11,7 @@
             <div class="modal-body">
                 {{ $body }}
             </div>
-            <form action="{{ route('movies.destroy', $movie->id) }}" method="post">
+            <form action="{{ route('movies.destroy', $movie) }}" method="post">
                 @csrf
                 <input type="hidden" name="_method" value="delete">
 

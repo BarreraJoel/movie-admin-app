@@ -5,21 +5,33 @@
 @endsection
 
 @section('main-content')
-    <h3>LOGIN</h3>
+    <h3>Inicio de sesión</h3>
 
     <form method="post" action="{{ route('log') }}">
         @csrf
 
-        <label for="email" class="label">Email</label>
-        <input type="email" class="input" name="email" value="{{session()->getOldInput('email')}}">
+        @include(
+            'components.form.input',
+            [
+                'type' => 'email',
+                'input_name' => 'email',
+                'input_text' => 'Email',
+                'placeholder' => 'Ingrese el email'
+            ]
+        )
         @error('email')
             <div class="alert alert-error" role="alert">
                 {{ $message }}
             </div>
         @enderror
 
-        <label for="password" class="label">Contraseña</label>
-        <input type="password" class="input" name="password" value="{{session()->getOldInput('password')}}">
+        @include(
+            'components.form.password',
+            [
+                'input_name' => 'password',
+                'input_text' => 'Contraseña',
+            ]
+        )
         @error('password')
             <div class="alert alert-error" role="alert">
                 {{ $message }}
@@ -31,7 +43,7 @@
     </form>
 
     @error('not_found')
-        <div class="text-error">
+        <div class="alert alert-error">
             {{ $message }}
         </div>
     @enderror

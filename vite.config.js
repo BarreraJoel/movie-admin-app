@@ -3,7 +3,7 @@ import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     server: {
-        https: true,
+        https: true, // Esto asegura que Vite sirva en HTTPS en producción.
     },
     plugins: [
         laravel({

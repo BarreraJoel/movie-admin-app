@@ -6,13 +6,13 @@
         <div class="w-3/4">
             <ul id="navbar" class="flex justify-end items-center">
                 <li>
-                    <a href="{{ route('home') }}">
+                    <a class="link-animated" href="{{ route('home') }}">
                         INICIO
                     </a>
                 </li>
                 <li>
                     <div class="relative inline-flex group rtl:[--placement:bottom-end]">
-                        <a href="{{ route('movies.index') }}">
+                        <a class="link-animated" href="{{ route('movies.index') }}">
                             PELICULAS
                         </a>
 

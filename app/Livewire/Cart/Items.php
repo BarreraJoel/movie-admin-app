@@ -1,32 +1,30 @@
 <?php
 
-namespace App\View\Components\Cart;
+namespace App\Livewire\Cart;
 
 use App\Models\Movie;
 use App\Services\CartService;
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\View\Component;
+use Livewire\Component;
 
 class Items extends Component
 {
     public Collection $movies;
+    private CartService $cartService;
 
-    /**
-     * Create a new component instance.
-     */
-    public function __construct(public CartService $cartService)
+    public function mount()
     {
         $this->getMovies();
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
-    public function render(): View|Closure|string
+    public function boot(CartService $cartService)
     {
-        return view('components.cart.items');
+        $this->cartService = $cartService;
+    }
+
+    public function render()
+    {
+        return view('livewire.cart.items');
     }
 
     private function getMovies()
@@ -37,4 +35,10 @@ class Items extends Component
             $this->movies->push(Movie::find($item));
         }
     }
+
+    public function removeItem($id)
+    {
+        $this->cartService->removeItem($id);
+    }
+
 }

@@ -15,7 +15,8 @@
 
         <div class="w-4/5 m-auto">
             <div>
-                <x-cart.items  />
+                @livewire('cart.items')
+                {{-- <x-cart.items  /> --}}
             </div>
             
             <div class="w-full flex justify-end mt-5">

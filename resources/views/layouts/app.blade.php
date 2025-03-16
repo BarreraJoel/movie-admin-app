@@ -10,7 +10,6 @@
         'resources/js/app.js'
     ])
     @livewireStyles
-
 </head>
 
 <body>
@@ -23,8 +22,9 @@
         @yield('main-content')
     </main>
 
-    @livewireScripts
+    <x-cart />
 
+    @livewireScripts
 </body>
 
 </html>

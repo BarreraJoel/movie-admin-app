@@ -17,10 +17,19 @@
             {{ $movie->description }}
         </p>
         <div class="card-actions">
-            <button class="btn btn-soft btn-primary"><span class="icon-[tabler--shopping-cart] "></span> Agregar al carrito</button>
+            @if ($exists)
+                <button type="submit" class="btn btn-soft btn-success disabled"><span class="icon-[tabler--check] "></span> Agregado</button>
+            @else
+                <form wire:submit.prevent='addItem({{ $movie->id }})'>
+                    @csrf
+                    <button type="submit" class="btn btn-soft btn-primary"><span class="icon-[tabler--shopping-cart] "></span> Agregar al carrito</button>
+                </form>
+            @endif    
+                
             <a class="btn btn-soft btn-success" href="{{ route('movies.edit', ['movie' => $movie]) }}">
                 <span class="icon-[tabler--pencil] "></span> Editar
             </a>
+
             <button type="button" class="btn btn-soft btn-error" aria-haspopup="dialog" aria-expanded="false"
             aria-controls="basic-modal" data-overlay="#basic-modal"><span class="icon-[tabler--x]"></span> Eliminar</button>
             

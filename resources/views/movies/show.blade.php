@@ -6,6 +6,13 @@
 
 @section('main-content')
 
+    @include('components.breadcrumb', [
+        'routes' => [
+            ['url' => 'movies.index', 'name' => 'Peliculas', 'param_name' => null, 'param_value' => null],
+            ['url' => 'movies.show','name' => $movie->name,'param_name' => 'movie','param_value' => $movie],
+        ]
+    ])
+    
     <div>
         @if (session()->has('success'))
             <div class="alert alert-success" role="alert">
@@ -13,7 +20,7 @@
             </div>
         @endif
 
-        @include('components.movies.movie-card', compact('movie'))
+        @livewire('movies.movie-card', compact('movie'))
     </div>
 
 @endsection

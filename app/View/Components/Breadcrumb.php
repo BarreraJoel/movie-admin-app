@@ -6,12 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class MovieCard extends Component
+class Breadcrumb extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(
+        public array $routes
+    )
     {
         //
     }
@@ -21,6 +23,6 @@ class MovieCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.movies.movie-card');
+        return view('components.breadcrumb');
     }
 }

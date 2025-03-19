@@ -52,4 +52,22 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    public function isAdmin() {
+        $isAdmin = false;
+
+        foreach ($this->roles as $role) {
+            if ($role->name == "admin") {
+                $isAdmin = true;
+                break;
+            }
+        }
+
+        return $isAdmin;
+    }
+
+    public function emailIsVerified() {
+        return isset($this->email_verified_at);
+    }
+
 }

@@ -21,7 +21,7 @@
             
             <div class="w-full flex justify-end mt-5">
                 <button class="btn btn-soft btn-accent">
-                    Finalizar Compra
+                    Ir a pagar
                 </button>
             </div>
         </div>

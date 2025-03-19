@@ -22,8 +22,8 @@
         @yield('main-content')
     </main>
 
-    <x-cart />
-
+    @livewire('cart.cart')
+    
     @livewireScripts
 </body>
 

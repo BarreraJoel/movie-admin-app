@@ -1,9 +1,12 @@
 <div>
-    <nav class="bg-slate-900 p-3 flex items-center">
-        <div class="w-1/4">
+    <nav class=" p-3 flex items-center">
+        <div class="w-1/4 ">
             <h3>PELICULAS</h3>
         </div>
-        <div class="w-3/4">
+        <div class="w-1/4 ">
+            @livewire('form.search')
+        </div>
+        <div class="w-2/4 ">
             <ul id="navbar" class="flex justify-end items-center">
                 <li>
                     <a class="link-animated" href="{{ route('home') }}">
@@ -15,15 +18,16 @@
                         <a class="link-animated" href="{{ route('movies.index') }}">
                             PELICULAS
                         </a>
-
-                        <ul
-                            class="absolute mt-7 w-48 dropdown-menu shadow-lg opacity-0 invisible transition-all duration-200 ease-in-out group-hover:opacity-100 group-hover:visible">
-                            <li>
-                                <a href="{{ route('movies.create') }}" class="dropdown-item">
-                                    Agregar
-                                </a>
-                            </li>
-                        </ul>
+                        
+                        @can('create-movie', \App\Models\User::class)
+                            <ul class="absolute mt-7 w-48 dropdown-menu shadow-lg opacity-0 invisible transition-all duration-200 ease-in-out group-hover:opacity-100 group-hover:visible">
+                                <li>
+                                    <a href="{{ route('movies.create') }}" class="dropdown-item">
+                                        Agregar
+                                    </a>
+                                </li>
+                            </ul>
+                        @endcan
                     </div>
                 </li>
                 <li>

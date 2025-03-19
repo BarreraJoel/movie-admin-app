@@ -6,7 +6,9 @@ use App\Http\Requests\StoreMovieRequest;
 use App\Models\Movie;
 use App\Services\FileService;
 use App\Services\ValidatorService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Gate;
 
 class MovieController extends Controller
 {
@@ -19,13 +21,14 @@ class MovieController extends Controller
         $movies = Movie::all();
         return view('movies.index', compact('movies'));
     }
-
+    
     /**
      * Summary of create
      * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
+        Gate::authorize('create-movie', Auth::user());
         return view('movies.create');
     }
 
@@ -36,8 +39,6 @@ class MovieController extends Controller
      */
     public function store(StoreMovieRequest $request)
     {
-        // dd($request->all());
-
         ValidatorService::validate(
             $request->all(),
             $request->rules(),
@@ -52,7 +53,7 @@ class MovieController extends Controller
         );
 
         $newMovie = new Movie($request->except(['image_url', 'categories']));
-        $newMovie->slug = Str::slug($request->input('name'),'-');
+        $newMovie->slug = Str::slug($request->input('name'), '-');
         $newMovie->image_url = $path;
         $newMovie->save();
 
@@ -79,6 +80,7 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
+        Gate::authorize('edit-movie', Auth::user());
         return view('movies.edit', compact('movie'));
     }
 
@@ -90,7 +92,6 @@ class MovieController extends Controller
      */
     public function update(StoreMovieRequest $request, Movie $movie)
     {
-        dd($request->all());
         ValidatorService::validate(
             $request->all(),
             $request->rules(),
@@ -105,7 +106,7 @@ class MovieController extends Controller
         );
 
         $movie->fill($request->except(['image_url', 'categories']));
-        $movie->slug = Str::slug($request->input('name'),'-');
+        $movie->slug = Str::slug($request->input('name'), '-');
         $movie->image_url = $path;
         $movie->update();
 
@@ -122,6 +123,8 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
+        Gate::authorize('delete-movie', Auth::user());
+
         $movie->delete();
 
         return redirect()->route('movies.index')

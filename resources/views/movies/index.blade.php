@@ -6,13 +6,13 @@
 
 @section('main-content')
 
-    <div class="w-full">
-        @if (session()->has('success'))
-            <div class="alert alert-primary" role="alert">
-                {{session()->get('success')}}
-            </div>
-        @endif
+    @if (session()->has('success'))
+        <div class="alert alert-primary" role="alert">
+            {{session()->get('success')}}
+        </div>
+    @endif
 
+    <div class="w-full">
         <ul class="flex justify-around">
             @foreach ($movies as $movie)
                 <li>

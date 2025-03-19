@@ -6,10 +6,10 @@
         </button>
     </div>
     <div class="drawer-body">
-        @if ($cartService->cartInstance && count($cartService->getItems()) > 0)
+        @if ($cart && count($cart->idItems) > 0)
             <ul>
-                @foreach ($cartService->getItems() as $item)
-                    <li>
+                @foreach ($cart->idItems as $item)
+                    <li class="mb-3">
                         @livewire('cart.item-cart', [
                             'movie' => $cartService->cast($item)
                         ])
@@ -23,12 +23,12 @@
     <div class="drawer-footer flex flex-col">
         <div class="w-full flex justify-between">
             <h4><strong>Total:</strong></h4>
-            @if ($cartService->cartInstance)
-                <p>${{ $cartService->cartInstance->total }}</p>
+            @if ($cart)
+                <p>${{ $cart->total }}</p>
             @endif
         </div>
         <div class="w-full">
-            <a href="{{ route('cart.index') }}" class="btn btn-accent w-full">
+            <a href="{{ route('cart.checkout') }}" class="btn btn-soft btn-accent w-full">
                 Finalizar Compra
             </a>
         </div>

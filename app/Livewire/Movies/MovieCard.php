@@ -15,7 +15,6 @@ class MovieCard extends Component
     public function boot(CartService $cartService)
     {
         $this->cartService = $cartService;
-        // $this->exists = $this->verifyItemExists($this->movie->id);
     }
 
     public function render()
@@ -28,7 +27,4 @@ class MovieCard extends Component
         $this->cartService->addItem($id);
     }
 
-    private function verifyItemExists($id) {
-        return $this->cartService->verifyItemExists($id);
-    }
 }

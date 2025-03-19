@@ -15,11 +15,11 @@ class CartController extends Controller
         $this->cartService = $service;
     }
 
-    public function index()
+    public function checkout()
     {
         $items = $this->cartService->getItems();
         // dd($items);
-        return view('cart.index', compact('items'));
+        return view('cart.checkout', compact('items'));
     }
 
     public function getItems()

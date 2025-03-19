@@ -1,6 +1,6 @@
 <div class="flex">
     <div class="w-1/4 h-full">
-        <img src="{{ asset('storage') . '/' . $movie->image_url }}" alt="" class="h-24">
+        <img src="{{ asset('storage') . '/' . $movie->image_url }}" alt="" class="h-24 rounded-md">
     </div>
     <div class="h-full flex flex-col w-3/4 ml-3">
         <div class="h-4/5 flex w-full">

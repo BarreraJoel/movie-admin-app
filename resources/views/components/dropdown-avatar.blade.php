@@ -18,8 +18,7 @@
         <span class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4"></span>
     </button>
 
-    <ul class="dropdown-menu dropdown-open:opacity-100 hidden min-w-60" role="menu" aria-orientation="vertical"
-        aria-labelledby="dropdown-avatar">
+    <ul class="dropdown-menu dropdown-open:opacity-100 hidden min-w-60" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-footer">
         <li class="dropdown-header gap-3">
 
             <div class="@if(!$user->image_url)avatar placeholder @endif">
@@ -42,10 +41,10 @@
                 Perfil
             </a>
         </li>
-        <li>
+        <li class="dropdown-footer gap-2">
             <form action="{{ route('logout') }}" method="post">
                 @csrf
-                <button type="submit" class="dropdown-item text-error">
+                <button type="submit" class="btn btn-error btn-soft m-auto">
                     <span class="icon-[tabler--logout] size-5"></span> Cerrar Sesión
                 </button>
             </form>

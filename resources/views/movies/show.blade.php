@@ -20,7 +20,9 @@
             </div>
         @endif
 
-        @livewire('movies.movie-card', compact('movie'))
+        <div class="h-full">
+            @livewire('movies.movie-card', compact('movie'))
+        </div>
     </div>
 
 @endsection

@@ -28,17 +28,29 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        User::create([
+            'name' => 'Miguel Mendez',
+            'email' => 'miguel@mail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
         Category::create(['name' => 'Terror',]);
         Category::create(['name' => 'Comedy',]);
         Category::create(['name' => 'Action',]);
         Category::create(['name' => 'Thriller',]);
         Category::create(['name' => 'Drama',]);
     
-        // Role::create(['name' => 'admin']);
-        // Role::create(['name' => 'guest']);
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'client']);
 
-        // $user = User::find(1);
-        // $user->roles()->attach(1);        
+        $one = User::find(1);
+        $one->roles()->attach(1);
+        
+        $two = User::find(2);
+        $two->roles()->attach(2);
+
+        $three = User::find(3);
+        $three->roles()->attach(2);
 
     }
 }
